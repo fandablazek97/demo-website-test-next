@@ -6,12 +6,12 @@ export default function Logo({
   className?: string;
 }) {
   return (
-    <div className={`h-[50px] w-[200px] ${className}`}>
+    <div className={`h-[40px] w-[160px] ${className}`}>
       <Image
         src="/placeholder-logo.svg"
         alt="Placeholder logo"
-        width="200"
-        height="50"
+        width="160"
+        height="40"
         className="object-contain"
       />
     </div>

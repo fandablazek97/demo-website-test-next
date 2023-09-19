@@ -1,5 +1,13 @@
-type Props = {};
+import clsx from "clsx";
 
-export default function Video({}: Props) {
-  return <div>Video</div>;
+type Props = {
+  className?: string;
+};
+
+export default function Video({ className }: Props) {
+  return (
+    <div className={clsx("", className)}>
+      <div></div>
+    </div>
+  );
 }

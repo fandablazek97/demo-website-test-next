@@ -1,8 +1,49 @@
 import clsx from "clsx";
+import Badge from "./Badge";
 import Container from "./Container";
+import Heading from "./Heading";
+
+function Pattern({
+  className,
+  ...props
+}: {
+  className?: string;
+  [key: string]: any;
+}) {
+  return (
+    <svg
+      className={clsx(
+        "absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]",
+        className
+      )}
+      aria-hidden="true"
+      {...props}
+    >
+      <defs>
+        <pattern
+          id="0787a7c5-978c-4f66-83c7-11c213f99cb7"
+          width={200}
+          height={200}
+          x="50%"
+          y={-1}
+          patternUnits="userSpaceOnUse"
+        >
+          <path d="M.5 200V.5H200" fill="none" />
+        </pattern>
+      </defs>
+      <rect
+        width="100%"
+        height="100%"
+        strokeWidth={0}
+        fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)"
+      />
+    </svg>
+  );
+}
 
 type Props = {
   as: React.ElementType;
+  badgeText?: string;
   title: string;
   description: string;
   className?: string;
@@ -11,6 +52,7 @@ type Props = {
 
 export default function Hero({
   as: AsElement = "div",
+  badgeText,
   title,
   description,
   className,
@@ -19,18 +61,20 @@ export default function Hero({
   return (
     <AsElement
       className={clsx(
-        "flex items-center justify-center bg-white lg:h-96",
+        "relative isolate flex items-center justify-center overflow-hidden bg-white lg:h-[44rem]",
         className
       )}
     >
-      <Container className="py-20 sm:py-28 lg:py-32">
-        <div>
-          <h1 className="text-2xl font-bold sm:text-4xl">
+      <Pattern />
+      <Container className="py-28 sm:py-32 lg:py-40">
+        <div className="flex flex-col items-center justify-center gap-8 text-center">
+          {badgeText && <Badge>{badgeText}</Badge>}
+          <Heading as="h1" size="lg">
             {title}
-          </h1>
-          <p className="text-lg">{description}</p>
+          </Heading>
+          <p className="max-w-prose text-lg">{description}</p>
+          {children && <div className="w-full">{children}</div>}
         </div>
-        {children && <div>{children}</div>}
       </Container>
     </AsElement>
   );

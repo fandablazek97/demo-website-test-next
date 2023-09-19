@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Favicon from "./Favicon";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
@@ -10,12 +11,15 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <div className={`${inter.className}`}>
-      <header>
-        <Navbar />
-      </header>
-      <main>{children}</main>
-      <Footer />
-    </div>
+    <>
+      <Favicon />
+      <div className={`${inter.className}`}>
+        <header>
+          <Navbar />
+        </header>
+        <main>{children}</main>
+        <Footer />
+      </div>
+    </>
   );
 }

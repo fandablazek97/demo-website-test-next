@@ -1,5 +1,24 @@
-type Props = {};
+import Head from "next/head";
 
-export default function Seo({}: Props) {
-  return <div>Seo</div>;
+type Props = {
+  title: string;
+  description: string;
+  noIndex?: boolean;
+  noFollow?: boolean;
+};
+
+export default function Seo({
+  title,
+  description,
+  noIndex = false,
+  noFollow = false,
+}: Props) {
+  return (
+    <Head>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      {noIndex && <meta name="robots" content="noindex" />}
+      {noFollow && <meta name="robots" content="nofollow" />}
+    </Head>
+  );
 }
