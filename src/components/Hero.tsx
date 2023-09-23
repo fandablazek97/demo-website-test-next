@@ -1,7 +1,28 @@
 import clsx from "clsx";
-import Badge from "./Badge";
 import Container from "./Container";
 import Heading from "./Heading";
+
+function Badge({
+  className,
+  children,
+  ...props
+}: {
+  className?: string;
+  children?: React.ReactNode;
+  [key: string]: any;
+}) {
+  return (
+    <div
+      className={clsx(
+        "inline-flex items-center justify-center rounded-xl bg-secondary-400 px-3 py-1 text-sm font-semibold text-secondary-950",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
 
 type Props = {
   as: React.ElementType;
