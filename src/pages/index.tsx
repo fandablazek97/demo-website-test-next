@@ -72,7 +72,7 @@ export default function HomePage() {
           </ul>
           <Link
             href="/services"
-            className="flex w-full items-center justify-center rounded-xl bg-white py-28 text-center text-xl font-bold text-primary-600 transition duration-300 hover:scale-105"
+            className="flex w-full items-center justify-center rounded-xl bg-white py-20 text-center text-xl font-bold text-primary-600 transition duration-300 hover:scale-105 sm:text-2xl"
           >
             See all services
           </Link>

@@ -113,11 +113,9 @@ export default function Navbar() {
     >
       <Container className="flex items-center justify-between py-4 sm:py-7">
         {/* Logo */}
-        <Link href="/" className="relative z-40">
+        <Link href="/" className="relative z-40 cursor-pointer">
           <Logo />
         </Link>
-
-        {/* Contact button */}
 
         {/* Desktop navigation */}
         <ul className="mr-auto hidden items-center gap-4 pl-10 lg:flex lg:gap-8">
