@@ -10,6 +10,27 @@ import Container from "./Container";
 import Logo from "./Logo";
 import Socials from "./Socials";
 
+function NavLink({
+  href,
+  children,
+  className,
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const router = useRouter();
+  const isActive = router.pathname === href;
+  return (
+    <Link
+      href={href}
+      className={clsx(isActive && "underline", className)}
+    >
+      {children}
+    </Link>
+  );
+}
+
 function Menu({
   isOpen,
   setIsOpen,
@@ -37,12 +58,12 @@ function Menu({
         <ul className="flex flex-col gap-2">
           {routes.map((route) => (
             <li key={route.name}>
-              <Link
+              <NavLink
                 href={route.href}
                 className="text-xl font-semibold hover:opacity-70"
               >
                 {route.name}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -124,7 +145,7 @@ export default function Navbar() {
               key={route.name}
               className="text-sm transition-opacity duration-150 hover:opacity-70"
             >
-              <Link href={route.href}>{route.name}</Link>
+              <NavLink href={route.href}>{route.name}</NavLink>
             </li>
           ))}
         </ul>
