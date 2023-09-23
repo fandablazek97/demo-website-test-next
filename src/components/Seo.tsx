@@ -15,7 +15,7 @@ export default function Seo({
 }: Props) {
   return (
     <Head>
-      <title>{title}</title>
+      <title>{`Demo website | ${title}`}</title>
       <meta name="description" content={description} />
       {noIndex && <meta name="robots" content="noindex" />}
       {noFollow && <meta name="robots" content="nofollow" />}

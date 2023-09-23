@@ -11,12 +11,12 @@ export default function Socials({ className }: Props) {
       {socials.map((social) => (
         <li
           key={social.name}
-          className="hover:text-primary-600 transition-colors duration-150"
+          className="transition-colors duration-150 hover:text-primary-600"
         >
           <a
             href={social.href}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
           >
             <span className="sr-only">{social.name}</span>
             <social.icon className="h-5 w-5" />

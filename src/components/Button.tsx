@@ -3,7 +3,7 @@ import Link from "next/link";
 
 type Props = {
   href: string;
-  intent?: "primary" | "secondary";
+  intent?: "primary" | "secondary" | "white";
   isExternal?: boolean;
   className?: string;
   children?: React.ReactNode;
@@ -15,6 +15,7 @@ const intentClasses = {
     "bg-primary-600 hover:bg-primary-500 text-primary-100",
   secondary:
     "bg-transparent ring-2 ring-inset ring-primary-600 text-primary-600 hover:bg-primary-600 hover:text-primary-100",
+  white: "bg-white text-primary-600 hover:bg-gray-100",
 };
 
 export default function Button({

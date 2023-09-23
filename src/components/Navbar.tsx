@@ -2,6 +2,7 @@ import { contact } from "@/data/contact";
 import { routes } from "@/data/routes";
 import clsx from "clsx";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 import Button from "./Button";
@@ -11,27 +12,47 @@ import Socials from "./Socials";
 
 function Menu({
   isOpen,
+  setIsOpen,
   className,
 }: {
   isOpen: boolean;
   className?: string;
+  setIsOpen: (isOpen: boolean) => void;
 }) {
+  // Zavře menu při změně routu
+  const router = useRouter();
+  useEffect(() => {
+    setIsOpen(false);
+  }, [router, setIsOpen]);
+
   return (
     <div
       className={clsx(
-        "fixed inset-0 z-30 h-screen w-screen bg-white transition-[opacity,visibility] duration-500",
+        "fixed inset-0 z-30 h-screen w-screen bg-gray-200 transition-[opacity,visibility] duration-500",
         !isOpen && "invisible opacity-0",
         className
       )}
     >
       <Container className="flex flex-col gap-10 pt-28">
-        <ul className="flex flex-col gap-6">
+        <ul className="flex flex-col gap-2">
           {routes.map((route) => (
+            <li key={route.name}>
+              <Link
+                href={route.href}
+                className="text-xl font-semibold hover:opacity-70"
+              >
+                {route.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <ul className="flex flex-col gap-2">
+          {contact.map((item) => (
             <li
-              key={route.name}
-              className="text-xl font-semibold hover:opacity-70"
+              key={item.name}
+              className="text-xl font-semibold text-primary-600 hover:opacity-70"
             >
-              <Link href={route.href}>{route.name}</Link>
+              <a href={item.href}>{item.name}</a>
             </li>
           ))}
         </ul>
@@ -91,7 +112,12 @@ export default function Navbar() {
       )}
     >
       <Container className="flex items-center justify-between py-4 sm:py-7">
-        <Logo className="relative z-40" />
+        {/* Logo */}
+        <Link href="/" className="relative z-40">
+          <Logo />
+        </Link>
+
+        {/* Contact button */}
 
         {/* Desktop navigation */}
         <ul className="mr-auto hidden items-center gap-4 pl-10 lg:flex lg:gap-8">
@@ -133,7 +159,7 @@ export default function Navbar() {
       </Container>
 
       {/* Menu */}
-      <Menu isOpen={isMenuOpen} />
+      <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
     </nav>
   );
 }

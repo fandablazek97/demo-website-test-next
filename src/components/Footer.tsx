@@ -6,7 +6,7 @@ type Props = {};
 
 export default function Footer({}: Props) {
   return (
-    <footer>
+    <footer className="border-t border-t-gray-200">
       <Container className="flex flex-col items-center justify-center gap-10 py-12 text-center md:flex-row md:justify-between md:text-left">
         <p>
           Copyright &copy; {new Date().getFullYear()} Company

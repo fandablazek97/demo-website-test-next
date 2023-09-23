@@ -13,7 +13,7 @@ export default function Layout({ children }: Props) {
   return (
     <>
       <Favicon />
-      <div className={`${inter.className}`}>
+      <div className={`${inter.className} text-gray-700`}>
         <header>
           <Navbar />
         </header>
